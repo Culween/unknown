@@ -34,5 +34,11 @@ namespace Grains
             }
             return Task.CompletedTask;
         }
+
+        public Task Notify(string message)
+        {
+            _subsManager.Notify(c => c.ReceiveMessage(message));
+            return Task.CompletedTask;
+        }
     }
 }

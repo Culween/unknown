@@ -67,6 +67,12 @@ namespace Client
             var group = client.GetGrain<ITaskGroupGrain>(Guid.NewGuid());
             await group.AddTask(taskGrainKey);
 
+            // Observe
+            var friend = client.GetGrain<INotifyGrain>(Guid.Empty);
+            Chat c = new Chat();
+            var obj = await client.CreateObjectReference<IChat>(c);
+            await friend.Subscribe(obj);
+
             var isOkGrain = client.GetGrain<IEverythingIsOkGrain>(Guid.NewGuid());
             await isOkGrain.Start();
         }

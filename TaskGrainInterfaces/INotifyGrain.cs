@@ -11,5 +11,7 @@ namespace TaskGrainInterfaces
         Task Subscribe(IChat chart);
 
         Task UnSubscribe(IChat observer);
+
+        Task Notify(string message);
     }
 }

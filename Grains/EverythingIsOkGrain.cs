@@ -27,6 +27,9 @@ namespace Grains
 
             logger.LogInformation($"Reminder={reminderName} tick.");
             logger.LogInformation($"Reminder: TaskGrainPrimaryKey={taskGrain.GetPrimaryKey().ToString()}, Name={await taskGrain.GetTaskName()}, it is Ok.");
+
+            var notifyGrain = GrainFactory.GetGrain<INotifyGrain>(Guid.Empty);
+            await notifyGrain.Notify($"[{DateTime.Now.ToString()}]: This is a message");
         }
 
         public async Task Start()

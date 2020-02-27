@@ -52,6 +52,7 @@ namespace Silo
                         .AddApplicationPart(typeof(TaskGrain).Assembly)
                         .AddApplicationPart(typeof(TaskGroupGrain).Assembly)
                         .AddApplicationPart(typeof(EverythingIsOkGrain).Assembly)
+                        .AddApplicationPart(typeof(NotifyGrain).Assembly)
                         .WithReferences())
                 .UseInMemoryReminderService()
                 .ConfigureLogging(logging => logging.AddConsole())
