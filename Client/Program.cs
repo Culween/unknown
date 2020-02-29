@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Configuration;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using TaskGrainInterfaces;
 
@@ -11,6 +13,11 @@ namespace Client
     {
         public static int Main(string[] args)
         {
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
             return RunMainAsync().Result;
         }
 
